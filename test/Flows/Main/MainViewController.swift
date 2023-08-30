@@ -43,6 +43,27 @@ final class MainViewController: UIViewController {
     
     private let loaderView = LoaderView()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Что то пошло не так, \nошибка 123"
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let retryButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("ПОВТОРИТЬ", for: .normal)
+        button.backgroundColor = .under
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 20
+        button.configuration = .plain()
+        button.configuration?.contentInsets = .init(top: 12, leading: 22, bottom: 12, trailing: 22)
+        return button
+    }()
+    
     init(
         output: MainFlowOutput
     ) {
@@ -58,7 +79,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        bindButton()
+        bindButtons()
         
         reloadData()
         output.viewDidLoad()
@@ -70,6 +91,8 @@ final class MainViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(reloadButton)
         view.addSubview(loaderView)
+        view.addSubview(errorLabel)
+        view.addSubview(retryButton)
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -87,10 +110,21 @@ final class MainViewController: UIViewController {
             $0.trailing.equalTo(view.snp.trailing).inset(17)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(26)
         }
+        
+        errorLabel.snp.makeConstraints {
+            $0.centerX.equalTo(view.snp.centerX)
+            $0.centerY.equalTo(view.snp.centerY).multipliedBy(0.90)
+        }
+        
+        retryButton.snp.makeConstraints {
+            $0.top.equalTo(errorLabel.snp.bottom).offset(55)
+            $0.centerX.equalTo(view.snp.centerX)
+        }
     }
     
-    private func bindButton() {
+    private func bindButtons() {
         reloadButton.addTarget(self, action: #selector(reloadButtonDidTap), for: .touchUpInside)
+        retryButton.addTarget(self, action: #selector(reloadButtonDidTap), for: .touchUpInside)
     }
     
     @objc
@@ -161,6 +195,12 @@ extension MainViewController: MainFlowInput {
     func reloadData() {
         guard isViewLoaded else { return }
         
+        tableView.isHidden = false
+        loaderView.isHidden = false
+        reloadButton.isHidden = false
+        errorLabel.isHidden = true
+        retryButton.isHidden = true
+        
         tableView.reloadData()
         switch output.loadingState {
         case .loaded:
@@ -178,6 +218,10 @@ extension MainViewController: MainFlowInput {
     }
     
     func showError() {
-        
+        tableView.isHidden = true
+        loaderView.isHidden = true
+        reloadButton.isHidden = true
+        errorLabel.isHidden = false
+        retryButton.isHidden = false
     }
 }
