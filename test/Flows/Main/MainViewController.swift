@@ -149,6 +149,14 @@ final class MainViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    private func changeErrorState(_ flag: Bool) {
+        tableView.isHidden = flag
+        loaderView.isHidden = flag
+        reloadButton.isHidden = flag
+        errorLabel.isHidden = !flag
+        retryButton.isHidden = !flag
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -214,11 +222,7 @@ extension MainViewController: MainFlowInput {
     func reloadData() {
         guard isViewLoaded else { return }
         
-        tableView.isHidden = false
-        loaderView.isHidden = false
-        reloadButton.isHidden = false
-        errorLabel.isHidden = true
-        retryButton.isHidden = true
+        changeErrorState(false)
         
         tableView.reloadData()
         switch output.loadingState {
@@ -237,10 +241,6 @@ extension MainViewController: MainFlowInput {
     }
     
     func showError() {
-        tableView.isHidden = true
-        loaderView.isHidden = true
-        reloadButton.isHidden = true
-        errorLabel.isHidden = false
-        retryButton.isHidden = false
+        changeErrorState(true)
     }
 }
