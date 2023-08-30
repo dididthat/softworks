@@ -24,6 +24,9 @@
 		1FB331E22A9F8AD6000CC1FF /* DeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */; };
 		1FB331E42A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331E32A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift */; };
 		1FB331E82A9F8CB0000CC1FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FB331E72A9F8CB0000CC1FF /* SnapKit */; };
+		1FB331EA2A9F8EC3000CC1FF /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331E92A9F8EC3000CC1FF /* DeviceTableViewCell.swift */; };
+		1FB331EC2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331EB2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift */; };
+		1FB331EE2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		1FB331DF2A9F8769000CC1FF /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel.swift; sourceTree = "<group>"; };
 		1FB331E32A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelToViewModelConverter.swift; sourceTree = "<group>"; };
+		1FB331E92A9F8EC3000CC1FF /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
+		1FB331EB2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DequeueReusableCell.swift"; sourceTree = "<group>"; };
+		1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscipt.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */,
+				1FB331E92A9F8EC3000CC1FF /* DeviceTableViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -160,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				1FB331DF2A9F8769000CC1FF /* UIColor+Hex.swift */,
+				1FB331EB2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift */,
+				1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -254,11 +263,14 @@
 				1FB331DD2A9F8703000CC1FF /* UIColor+Custom.swift in Sources */,
 				1FB331B62A9F7ABA000CC1FF /* SceneDelegate.swift in Sources */,
 				1FB331E42A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift in Sources */,
+				1FB331EE2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift in Sources */,
 				1FB331CF2A9F801F000CC1FF /* MainFlowFactory.swift in Sources */,
 				1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */,
 				1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */,
+				1FB331EA2A9F8EC3000CC1FF /* DeviceTableViewCell.swift in Sources */,
 				1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */,
 				1FB331E02A9F8769000CC1FF /* UIColor+Hex.swift in Sources */,
+				1FB331EC2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift in Sources */,
 				1FB331D12A9F80D1000CC1FF /* MainPresenter.swift in Sources */,
 				1FB331C92A9F7EEF000CC1FF /* NetworkAPI.swift in Sources */,
 			);

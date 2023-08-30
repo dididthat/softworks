@@ -20,6 +20,9 @@ final class MainViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
+        
+        tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.identifier)
+        
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -64,6 +67,12 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(of: DeviceTableViewCell.self, for: indexPath),
+           let model = output.viewModels[safe: indexPath.row] {
+            cell.configure(with: model)
+            return cell
+        }
+        
         return UITableViewCell()
     }
 }
