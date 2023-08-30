@@ -29,6 +29,8 @@
 		1FB331EE2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */; };
 		1FB331F72A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331F62A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift */; };
 		1FB331F92A9FC4F7000CC1FF /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331F82A9FC4F7000CC1FF /* LoaderView.swift */; };
+		1FB331FB2A9FD4DC000CC1FF /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FB331FA2A9FD4DC000CC1FF /* Roboto.ttf */; };
+		1FB331FD2A9FD5F3000CC1FF /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331FC2A9FD5F3000CC1FF /* UIFont+Custom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscipt.swift"; sourceTree = "<group>"; };
 		1FB331F62A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDeviceTableViewCell.swift; sourceTree = "<group>"; };
 		1FB331F82A9FC4F7000CC1FF /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		1FB331FA2A9FD4DC000CC1FF /* Roboto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto.ttf; sourceTree = "<group>"; };
+		1FB331FC2A9FD5F3000CC1FF /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +168,9 @@
 		1FB331DB2A9F86D3000CC1FF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1FB331FA2A9FD4DC000CC1FF /* Roboto.ttf */,
 				1FB331DC2A9F8703000CC1FF /* UIColor+Custom.swift */,
+				1FB331FC2A9FD5F3000CC1FF /* UIFont+Custom.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB331FB2A9FD4DC000CC1FF /* Roboto.ttf in Resources */,
 				1FB331C02A9F7ABC000CC1FF /* LaunchScreen.storyboard in Resources */,
 				1FB331BD2A9F7ABC000CC1FF /* Assets.xcassets in Resources */,
 			);
@@ -275,6 +282,7 @@
 				1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */,
 				1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */,
 				1FB331EA2A9F8EC3000CC1FF /* DeviceTableViewCell.swift in Sources */,
+				1FB331FD2A9FD5F3000CC1FF /* UIFont+Custom.swift in Sources */,
 				1FB331F72A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift in Sources */,
 				1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */,
 				1FB331E02A9F8769000CC1FF /* UIColor+Hex.swift in Sources */,

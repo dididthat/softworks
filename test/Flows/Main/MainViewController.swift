@@ -19,7 +19,7 @@ final class MainViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = .roboto(size: 24)
         label.numberOfLines = 0
         label.text = "Умные \nвещи"
         label.shadowColor = .black
@@ -58,7 +58,7 @@ final class MainViewController: UIViewController {
         label.text = "Что то пошло не так, \nошибка 123"
         label.textColor = .white
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = .roboto(size: 24)
         label.textAlignment = .center
         return label
     }()

@@ -40,13 +40,14 @@ final class DeviceTableViewCell: UITableViewCell {
     private let statusLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
+        label.font = .roboto(size: 12)
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .text
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = .roboto(size: 24)
         label.numberOfLines = 3
         return label
     }()
@@ -61,12 +62,14 @@ final class DeviceTableViewCell: UITableViewCell {
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
+        label.font = .roboto(size: 12)
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
+        label.font = .roboto(size: 12)
         return label
     }()
     
