@@ -19,6 +19,11 @@
 		1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D32A9F8315000CC1FF /* DevicesDTO.swift */; };
 		1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D52A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift */; };
 		1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D82A9F8462000CC1FF /* DeviceModel.swift */; };
+		1FB331DD2A9F8703000CC1FF /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331DC2A9F8703000CC1FF /* UIColor+Custom.swift */; };
+		1FB331E02A9F8769000CC1FF /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331DF2A9F8769000CC1FF /* UIColor+Hex.swift */; };
+		1FB331E22A9F8AD6000CC1FF /* DeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */; };
+		1FB331E42A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331E32A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift */; };
+		1FB331E82A9F8CB0000CC1FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FB331E72A9F8CB0000CC1FF /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,10 @@
 		1FB331D32A9F8315000CC1FF /* DevicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDTO.swift; sourceTree = "<group>"; };
 		1FB331D52A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDTOToDomainConverter.swift; sourceTree = "<group>"; };
 		1FB331D82A9F8462000CC1FF /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		1FB331DC2A9F8703000CC1FF /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
+		1FB331DF2A9F8769000CC1FF /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel.swift; sourceTree = "<group>"; };
+		1FB331E32A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelToViewModelConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB331E82A9F8CB0000CC1FF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +64,7 @@
 			children = (
 				1FB331B22A9F7ABA000CC1FF /* test */,
 				1FB331B12A9F7ABA000CC1FF /* Products */,
+				1FB331E62A9F8CB0000CC1FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,11 +81,13 @@
 			children = (
 				1FB331B32A9F7ABA000CC1FF /* AppDelegate.swift */,
 				1FB331B52A9F7ABA000CC1FF /* SceneDelegate.swift */,
-				1FB331CC2A9F7FB4000CC1FF /* Flows */,
 				1FB331BC2A9F7ABC000CC1FF /* Assets.xcassets */,
 				1FB331BE2A9F7ABC000CC1FF /* LaunchScreen.storyboard */,
 				1FB331C12A9F7ABC000CC1FF /* Info.plist */,
+				1FB331CC2A9F7FB4000CC1FF /* Flows */,
 				1FB331C72A9F7ED6000CC1FF /* Services */,
+				1FB331DB2A9F86D3000CC1FF /* Resources */,
+				1FB331DE2A9F8759000CC1FF /* Helpers */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -99,6 +112,7 @@
 		1FB331CD2A9F7FFF000CC1FF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1FB331DA2A9F869D000CC1FF /* UI */,
 				1FB331D72A9F8453000CC1FF /* Domain */,
 				1FB331D22A9F82FB000CC1FF /* SAL */,
 				1FB331CE2A9F801F000CC1FF /* MainFlowFactory.swift */,
@@ -121,8 +135,40 @@
 			isa = PBXGroup;
 			children = (
 				1FB331D82A9F8462000CC1FF /* DeviceModel.swift */,
+				1FB331E32A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		1FB331DA2A9F869D000CC1FF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1FB331DB2A9F86D3000CC1FF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1FB331DC2A9F8703000CC1FF /* UIColor+Custom.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1FB331DE2A9F8759000CC1FF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1FB331DF2A9F8769000CC1FF /* UIColor+Hex.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1FB331E62A9F8CB0000CC1FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +187,9 @@
 			dependencies = (
 			);
 			name = test;
+			packageProductDependencies = (
+				1FB331E72A9F8CB0000CC1FF /* SnapKit */,
+			);
 			productName = test;
 			productReference = 1FB331B02A9F7ABA000CC1FF /* test.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +218,9 @@
 				Base,
 			);
 			mainGroup = 1FB331A72A9F7ABA000CC1FF;
+			packageReferences = (
+				1FB331E52A9F8C92000CC1FF /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 1FB331B12A9F7ABA000CC1FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -196,13 +248,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB331B82A9F7ABA000CC1FF /* MainViewController.swift in Sources */,
+				1FB331E22A9F8AD6000CC1FF /* DeviceViewModel.swift in Sources */,
 				1FB331CB2A9F7F10000CC1FF /* NetworkClient.swift in Sources */,
 				1FB331B42A9F7ABA000CC1FF /* AppDelegate.swift in Sources */,
+				1FB331DD2A9F8703000CC1FF /* UIColor+Custom.swift in Sources */,
 				1FB331B62A9F7ABA000CC1FF /* SceneDelegate.swift in Sources */,
+				1FB331E42A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift in Sources */,
 				1FB331CF2A9F801F000CC1FF /* MainFlowFactory.swift in Sources */,
 				1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */,
 				1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */,
 				1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */,
+				1FB331E02A9F8769000CC1FF /* UIColor+Hex.swift in Sources */,
 				1FB331D12A9F80D1000CC1FF /* MainPresenter.swift in Sources */,
 				1FB331C92A9F7EEF000CC1FF /* NetworkAPI.swift in Sources */,
 			);
@@ -418,6 +474,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1FB331E52A9F8C92000CC1FF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1FB331E72A9F8CB0000CC1FF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FB331E52A9F8C92000CC1FF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1FB331A82A9F7ABA000CC1FF /* Project object */;
 }

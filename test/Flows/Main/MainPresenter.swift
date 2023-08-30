@@ -8,12 +8,15 @@
 import Foundation
 
 protocol MainFlowOutput: AnyObject {
+    var viewModels: [DeviceViewModel] { get }
+    
     func viewDidLoad()
 }
 
 final class MainPresenter: MainFlowOutput {
     
     weak var input: MainFlowInput?
+    private(set) var viewModels: [DeviceViewModel] = []
     
     private let networkClient: NetworkClient
     
@@ -39,11 +42,18 @@ extension MainPresenter {
             switch result {
             case .success(let dto):
                 let converter = DeviceDTOToDomainConverter()
+                let toViewModelConverter = DeviceModelToViewModelConverter()
                 self.models = dto.data.map { converter.convert(from: $0) }
-                self.input?.reloadData()
+                self.viewModels = self.models.map { toViewModelConverter.convert(from: $0) }
+                
+                DispatchQueue.main.async {
+                    self.input?.reloadData()
+                }
                 
             case .failure:
-                self.input?.showError()
+                DispatchQueue.main.async {
+                    self.input?.showError()
+                }
             }
         }
     }
