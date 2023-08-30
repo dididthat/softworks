@@ -66,6 +66,19 @@ final class DeviceTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let dateStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    private let dateImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Clock")
+        return imageView
+    }()
+    
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -127,13 +140,16 @@ final class DeviceTableViewCell: UITableViewCell {
         contentView.addSubview(statusStackView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleUnderView)
-        contentView.addSubview(dateLabel)
+        contentView.addSubview(dateStackView)
         contentView.addSubview(contentImageView)
         
         statusStackView.addArrangedSubview(statusIndicatorView)
         statusStackView.addArrangedSubview(statusLabel)
         
         subtitleUnderView.addSubview(subtitleLabel)
+        
+        dateStackView.addArrangedSubview(dateImageView)
+        dateStackView.addArrangedSubview(dateLabel)
         
         statusStackView.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top).inset(17)
@@ -163,7 +179,7 @@ final class DeviceTableViewCell: UITableViewCell {
             $0.centerX.equalTo(subtitleUnderView.snp.centerX)
         }
         
-        dateLabel.snp.makeConstraints {
+        dateStackView.snp.makeConstraints {
             $0.trailing.equalTo(contentView.snp.trailing).inset(17)
             $0.bottom.equalTo(contentView.snp.bottom).inset(18).priority(.low)
         }
