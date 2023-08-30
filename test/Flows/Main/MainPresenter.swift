@@ -11,6 +11,7 @@ protocol MainFlowOutput: AnyObject {
     var viewModels: [DeviceViewModel] { get }
     
     func viewDidLoad()
+    func reloadData()
     func removeItem(at index: Int)
 }
 
@@ -32,6 +33,10 @@ final class MainPresenter: MainFlowOutput {
     }
     
     func viewDidLoad() {
+        loadModels()
+    }
+    
+    func reloadData() {
         loadModels()
     }
     

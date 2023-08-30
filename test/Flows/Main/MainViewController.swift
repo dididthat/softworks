@@ -29,7 +29,16 @@ final class MainViewController: UIViewController {
         return tableView
     }()
     
-    
+    private let reloadButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("ОБНОВИТЬ", for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 25
+        button.configuration = .plain()
+        button.configuration?.contentInsets = .init(top: 15, leading: 24, bottom: 15, trailing: 24)
+        return button
+    }()
     
     init(
         output: MainFlowOutput
@@ -46,6 +55,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        bindButton()
         
         output.viewDidLoad()
     }
@@ -54,12 +64,28 @@ final class MainViewController: UIViewController {
         view.backgroundColor = .background
         
         view.addSubview(tableView)
+        view.addSubview(reloadButton)
+        
         tableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.equalTo(view.snp.leading).inset(30)
             $0.trailing.equalTo(view.snp.trailing).inset(30)
             $0.bottom.equalTo(view.snp.bottom)
         }
+        
+        reloadButton.snp.makeConstraints {
+            $0.trailing.equalTo(view.snp.trailing).inset(17)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(26)
+        }
+    }
+    
+    private func bindButton() {
+        reloadButton.addTarget(self, action: #selector(reloadButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func reloadButtonDidTap() {
+        output.reloadData()
     }
 }
 
