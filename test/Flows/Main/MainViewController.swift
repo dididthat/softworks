@@ -132,6 +132,23 @@ final class MainViewController: UIViewController {
     private func reloadButtonDidTap() {
         output.reloadData()
     }
+    
+    private func showDialogForDeleting(productName: String, indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Вы хотите удалить", message: "\(productName)?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .default))
+        
+        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { [weak self] action in
+            guard let self else { return }
+            
+            self.output.removeItem(at: indexPath.row)
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+        }))
+        
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -182,12 +199,13 @@ extension MainViewController: UITableViewDelegate {
         commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath
     ) {
-        guard editingStyle == .delete else { return }
+        guard
+            editingStyle == .delete,
+            case .loaded(let models) = output.loadingState,
+            let titleModel = models[safe: indexPath.row]?.title
+        else { return }
         
-        output.removeItem(at: indexPath.row)
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
+        showDialogForDeleting(productName: titleModel, indexPath: indexPath)
     }
 }
 
