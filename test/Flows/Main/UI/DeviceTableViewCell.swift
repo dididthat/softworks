@@ -26,7 +26,6 @@ final class DeviceTableViewCell: UITableViewCell {
     
     private let statusStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.contentMode = .scaleAspectFit
         stackView.axis = .horizontal
         stackView.spacing = 5
         return stackView
@@ -113,9 +112,11 @@ final class DeviceTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        clipsToBounds = true
-        layer.cornerRadius = 20
-        layer.addSublayer(gradientLayer)
+        backgroundColor = .clear
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 20
+        contentView.layer.addSublayer(gradientLayer)
+        selectionStyle = .none
     }
     
     private func setupViews() {
@@ -146,7 +147,7 @@ final class DeviceTableViewCell: UITableViewCell {
         }
         
         subtitleUnderView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(62)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(62).priority(.low)
             $0.leading.equalTo(contentView.snp.leading).inset(15)
             $0.height.equalTo(27)
             $0.width.equalTo(130)

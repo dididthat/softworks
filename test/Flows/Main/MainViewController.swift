@@ -20,6 +20,7 @@ final class MainViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
         
         tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.identifier)
         
@@ -27,6 +28,8 @@ final class MainViewController: UIViewController {
         tableView.delegate = self
         return tableView
     }()
+    
+    
     
     init(
         output: MainFlowOutput
@@ -75,11 +78,26 @@ extension MainViewController: UITableViewDataSource {
         
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
 }
 
 // MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
-    
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        guard editingStyle == .delete else { return }
+        
+        output.removeItem(at: indexPath.row)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
 }
 
 // MARK: - MainFlowInput

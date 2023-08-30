@@ -11,6 +11,7 @@ protocol MainFlowOutput: AnyObject {
     var viewModels: [DeviceViewModel] { get }
     
     func viewDidLoad()
+    func removeItem(at index: Int)
 }
 
 final class MainPresenter: MainFlowOutput {
@@ -18,6 +19,7 @@ final class MainPresenter: MainFlowOutput {
     weak var input: MainFlowInput?
     private(set) var viewModels: [DeviceViewModel] = []
     
+    private let toViewModelConverter: DeviceModelToViewModelConverter
     private let networkClient: NetworkClient
     
     private var models: [DeviceModel] = []
@@ -26,10 +28,16 @@ final class MainPresenter: MainFlowOutput {
         networkClient: NetworkClient
     ) {
         self.networkClient = networkClient
+        self.toViewModelConverter = DeviceModelToViewModelConverter()
     }
     
     func viewDidLoad() {
         loadModels()
+    }
+    
+    func removeItem(at index: Int) {
+        models.remove(at: index)
+        viewModels = models.map { toViewModelConverter.convert(from: $0) }
     }
 }
 
@@ -42,9 +50,8 @@ extension MainPresenter {
             switch result {
             case .success(let dto):
                 let converter = DeviceDTOToDomainConverter()
-                let toViewModelConverter = DeviceModelToViewModelConverter()
                 self.models = dto.data.map { converter.convert(from: $0) }
-                self.viewModels = self.models.map { toViewModelConverter.convert(from: $0) }
+                self.viewModels = self.models.map { self.toViewModelConverter.convert(from: $0) }
                 
                 DispatchQueue.main.async {
                     self.input?.reloadData()
