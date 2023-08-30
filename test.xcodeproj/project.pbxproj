@@ -27,6 +27,8 @@
 		1FB331EA2A9F8EC3000CC1FF /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331E92A9F8EC3000CC1FF /* DeviceTableViewCell.swift */; };
 		1FB331EC2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331EB2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift */; };
 		1FB331EE2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */; };
+		1FB331F72A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331F62A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift */; };
+		1FB331F92A9FC4F7000CC1FF /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331F82A9FC4F7000CC1FF /* LoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		1FB331E92A9F8EC3000CC1FF /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		1FB331EB2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DequeueReusableCell.swift"; sourceTree = "<group>"; };
 		1FB331ED2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscipt.swift"; sourceTree = "<group>"; };
+		1FB331F62A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDeviceTableViewCell.swift; sourceTree = "<group>"; };
+		1FB331F82A9FC4F7000CC1FF /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,8 @@
 			children = (
 				1FB331E12A9F8AD6000CC1FF /* DeviceViewModel.swift */,
 				1FB331E92A9F8EC3000CC1FF /* DeviceTableViewCell.swift */,
+				1FB331F62A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift */,
+				1FB331F82A9FC4F7000CC1FF /* LoaderView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -263,11 +269,13 @@
 				1FB331DD2A9F8703000CC1FF /* UIColor+Custom.swift in Sources */,
 				1FB331B62A9F7ABA000CC1FF /* SceneDelegate.swift in Sources */,
 				1FB331E42A9F8B4D000CC1FF /* DeviceModelToViewModelConverter.swift in Sources */,
+				1FB331F92A9FC4F7000CC1FF /* LoaderView.swift in Sources */,
 				1FB331EE2A9F98D6000CC1FF /* Collection+SafeSubscipt.swift in Sources */,
 				1FB331CF2A9F801F000CC1FF /* MainFlowFactory.swift in Sources */,
 				1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */,
 				1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */,
 				1FB331EA2A9F8EC3000CC1FF /* DeviceTableViewCell.swift in Sources */,
+				1FB331F72A9FBC57000CC1FF /* LoadingDeviceTableViewCell.swift in Sources */,
 				1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */,
 				1FB331E02A9F8769000CC1FF /* UIColor+Hex.swift in Sources */,
 				1FB331EC2A9F9006000CC1FF /* UITableView+DequeueReusableCell.swift in Sources */,

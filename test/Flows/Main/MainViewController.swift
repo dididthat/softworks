@@ -23,6 +23,7 @@ final class MainViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.identifier)
+        tableView.register(LoadingDeviceTableViewCell.self, forCellReuseIdentifier: LoadingDeviceTableViewCell.identifier)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,6 +40,8 @@ final class MainViewController: UIViewController {
         button.configuration?.contentInsets = .init(top: 15, leading: 24, bottom: 15, trailing: 24)
         return button
     }()
+    
+    private let loaderView = LoaderView()
     
     init(
         output: MainFlowOutput
@@ -57,6 +60,7 @@ final class MainViewController: UIViewController {
         setupUI()
         bindButton()
         
+        reloadData()
         output.viewDidLoad()
     }
     
@@ -65,6 +69,7 @@ final class MainViewController: UIViewController {
         
         view.addSubview(tableView)
         view.addSubview(reloadButton)
+        view.addSubview(loaderView)
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -74,6 +79,11 @@ final class MainViewController: UIViewController {
         }
         
         reloadButton.snp.makeConstraints {
+            $0.trailing.equalTo(view.snp.trailing).inset(17)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(26)
+        }
+        
+        loaderView.snp.makeConstraints {
             $0.trailing.equalTo(view.snp.trailing).inset(17)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(26)
         }
@@ -92,21 +102,41 @@ final class MainViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        output.viewModels.count
+        switch output.loadingState {
+        case .loaded(let models):
+            return models.count
+            
+        case .loading(let skeletonsCount):
+            return skeletonsCount
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(of: DeviceTableViewCell.self, for: indexPath),
-           let model = output.viewModels[safe: indexPath.row] {
-            cell.configure(with: model)
-            return cell
+        switch output.loadingState {
+        case .loading:
+            if let cell = tableView.dequeueReusableCell(of: LoadingDeviceTableViewCell.self, for: indexPath) {
+                return cell
+            }
+            
+        case .loaded(let models):
+            if let cell = tableView.dequeueReusableCell(of: DeviceTableViewCell.self, for: indexPath),
+               let model = models[safe: indexPath.row] {
+                cell.configure(with: model)
+                return cell
+            }
         }
         
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
+        switch output.loadingState {
+        case .loading:
+            return false
+            
+        case .loaded:
+            return true
+        }
     }
 }
 
@@ -129,7 +159,22 @@ extension MainViewController: UITableViewDelegate {
 // MARK: - MainFlowInput
 extension MainViewController: MainFlowInput {
     func reloadData() {
+        guard isViewLoaded else { return }
+        
         tableView.reloadData()
+        switch output.loadingState {
+        case .loaded:
+            UIView.animate(withDuration: 0.3) {
+                self.reloadButton.alpha = 1
+                self.loaderView.alpha = 0
+                self.loaderView.stopLoading()
+            }
+            
+        case .loading:
+            reloadButton.alpha = 0
+            loaderView.alpha = 1
+            loaderView.startLoading()
+        }
     }
     
     func showError() {

@@ -8,17 +8,23 @@
 import Foundation
 
 protocol MainFlowOutput: AnyObject {
-    var viewModels: [DeviceViewModel] { get }
+    var loadingState: MainFlowLoadingState { get }
     
     func viewDidLoad()
     func reloadData()
     func removeItem(at index: Int)
 }
 
+enum MainFlowLoadingState {
+    case loading(skeletonsCount: Int)
+    case loaded([DeviceViewModel])
+}
+
 final class MainPresenter: MainFlowOutput {
+    private static let skeletonsCount = 4
     
     weak var input: MainFlowInput?
-    private(set) var viewModels: [DeviceViewModel] = []
+    private(set) var loadingState: MainFlowLoadingState
     
     private let toViewModelConverter: DeviceModelToViewModelConverter
     private let networkClient: NetworkClient
@@ -30,6 +36,7 @@ final class MainPresenter: MainFlowOutput {
     ) {
         self.networkClient = networkClient
         self.toViewModelConverter = DeviceModelToViewModelConverter()
+        self.loadingState = .loading(skeletonsCount: Self.skeletonsCount)
     }
     
     func viewDidLoad() {
@@ -37,12 +44,16 @@ final class MainPresenter: MainFlowOutput {
     }
     
     func reloadData() {
+        loadingState = .loading(skeletonsCount: Self.skeletonsCount)
+        DispatchQueue.main.async {
+            self.input?.reloadData()
+        }
         loadModels()
     }
     
     func removeItem(at index: Int) {
         models.remove(at: index)
-        viewModels = models.map { toViewModelConverter.convert(from: $0) }
+        loadingState = .loaded(models.map { toViewModelConverter.convert(from: $0) })
     }
 }
 
@@ -56,7 +67,7 @@ extension MainPresenter {
             case .success(let dto):
                 let converter = DeviceDTOToDomainConverter()
                 self.models = dto.data.map { converter.convert(from: $0) }
-                self.viewModels = self.models.map { self.toViewModelConverter.convert(from: $0) }
+                self.loadingState = .loaded(self.models.map { self.toViewModelConverter.convert(from: $0) })
                 
                 DispatchQueue.main.async {
                     self.input?.reloadData()
