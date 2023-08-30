@@ -56,6 +56,12 @@ final class LoadingDeviceTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = contentView.frame.inset(by: .init(top: 20, left: 0, bottom: 20, right: 0))
+    }
+    
     private func setupUI() {
         backgroundColor = .clear
         contentView.clipsToBounds = true

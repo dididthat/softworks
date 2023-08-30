@@ -91,6 +91,7 @@ final class DeviceTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         gradientLayer.frame = bounds
+        contentView.frame = contentView.frame.inset(by: .init(top: 20, left: 0, bottom: 20, right: 0))
     }
     
     override func prepareForReuse() {

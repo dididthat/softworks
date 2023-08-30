@@ -21,6 +21,7 @@ final class MainViewController: UIViewController {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
+        tableView.separatorColor = .clear
         
         tableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.identifier)
         tableView.register(LoadingDeviceTableViewCell.self, forCellReuseIdentifier: LoadingDeviceTableViewCell.identifier)
