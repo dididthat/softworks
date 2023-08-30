@@ -32,6 +32,10 @@ extension UIColor {
         UIColor(hex: "#3F4956")
     }
     
+    static var activeText: UIColor? {
+        UIColor(hex: "#885FF8")
+    }
+    
     static var skeletonAccent: UIColor {
         UIColor(red: 25 / 255, green: 33 / 255, blue: 44 / 255, alpha: 0.5)
     }

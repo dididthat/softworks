@@ -17,6 +17,15 @@ final class MainViewController: UIViewController {
     
     private let output: MainFlowOutput
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.numberOfLines = 0
+        label.text = "Умные \nвещи"
+        label.shadowColor = .black
+        return label
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -89,14 +98,20 @@ final class MainViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .background
         
+        view.addSubview(titleLabel)
         view.addSubview(tableView)
         view.addSubview(reloadButton)
         view.addSubview(loaderView)
         view.addSubview(errorLabel)
         view.addSubview(retryButton)
         
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(32)
+            $0.leading.equalTo(view.snp.leading).inset(30)
+        }
+        
         tableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(19)
             $0.leading.equalTo(view.snp.leading).inset(30)
             $0.trailing.equalTo(view.snp.trailing).inset(30)
             $0.bottom.equalTo(view.snp.bottom)
@@ -154,6 +169,7 @@ final class MainViewController: UIViewController {
         tableView.isHidden = flag
         loaderView.isHidden = flag
         reloadButton.isHidden = flag
+        titleLabel.isHidden = flag
         errorLabel.isHidden = !flag
         retryButton.isHidden = !flag
     }
@@ -231,11 +247,13 @@ extension MainViewController: MainFlowInput {
                 self.reloadButton.alpha = 1
                 self.loaderView.alpha = 0
                 self.loaderView.stopLoading()
+                self.titleLabel.textColor = .activeText
             }
             
         case .loading:
             reloadButton.alpha = 0
             loaderView.alpha = 1
+            titleLabel.textColor = .skeletonBackground
             loaderView.startLoading()
         }
     }
