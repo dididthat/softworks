@@ -8,7 +8,8 @@
 import UIKit
 
 protocol MainFlowInput: AnyObject {
-    
+    func reloadData()
+    func showError()
 }
 
 final class MainViewController: UIViewController {
@@ -28,10 +29,18 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        output.viewDidLoad()
     }
 }
 
 // MARK: - MainFlowInput
 extension MainViewController: MainFlowInput {
+    func reloadData() {
+
+    }
     
+    func showError() {
+        
+    }
 }

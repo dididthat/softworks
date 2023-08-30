@@ -16,6 +16,9 @@
 		1FB331CB2A9F7F10000CC1FF /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331CA2A9F7F10000CC1FF /* NetworkClient.swift */; };
 		1FB331CF2A9F801F000CC1FF /* MainFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331CE2A9F801F000CC1FF /* MainFlowFactory.swift */; };
 		1FB331D12A9F80D1000CC1FF /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D02A9F80D1000CC1FF /* MainPresenter.swift */; };
+		1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D32A9F8315000CC1FF /* DevicesDTO.swift */; };
+		1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D52A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift */; };
+		1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB331D82A9F8462000CC1FF /* DeviceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		1FB331CA2A9F7F10000CC1FF /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		1FB331CE2A9F801F000CC1FF /* MainFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowFactory.swift; sourceTree = "<group>"; };
 		1FB331D02A9F80D1000CC1FF /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		1FB331D32A9F8315000CC1FF /* DevicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDTO.swift; sourceTree = "<group>"; };
+		1FB331D52A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesDTOToDomainConverter.swift; sourceTree = "<group>"; };
+		1FB331D82A9F8462000CC1FF /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +99,30 @@
 		1FB331CD2A9F7FFF000CC1FF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1FB331D72A9F8453000CC1FF /* Domain */,
+				1FB331D22A9F82FB000CC1FF /* SAL */,
 				1FB331CE2A9F801F000CC1FF /* MainFlowFactory.swift */,
 				1FB331B72A9F7ABA000CC1FF /* MainViewController.swift */,
 				1FB331D02A9F80D1000CC1FF /* MainPresenter.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		1FB331D22A9F82FB000CC1FF /* SAL */ = {
+			isa = PBXGroup;
+			children = (
+				1FB331D32A9F8315000CC1FF /* DevicesDTO.swift */,
+				1FB331D52A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift */,
+			);
+			path = SAL;
+			sourceTree = "<group>";
+		};
+		1FB331D72A9F8453000CC1FF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1FB331D82A9F8462000CC1FF /* DeviceModel.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +200,9 @@
 				1FB331B42A9F7ABA000CC1FF /* AppDelegate.swift in Sources */,
 				1FB331B62A9F7ABA000CC1FF /* SceneDelegate.swift in Sources */,
 				1FB331CF2A9F801F000CC1FF /* MainFlowFactory.swift in Sources */,
+				1FB331D62A9F8431000CC1FF /* DevicesDTOToDomainConverter.swift in Sources */,
+				1FB331D42A9F8315000CC1FF /* DevicesDTO.swift in Sources */,
+				1FB331D92A9F8462000CC1FF /* DeviceModel.swift in Sources */,
 				1FB331D12A9F80D1000CC1FF /* MainPresenter.swift in Sources */,
 				1FB331C92A9F7EEF000CC1FF /* NetworkAPI.swift in Sources */,
 			);

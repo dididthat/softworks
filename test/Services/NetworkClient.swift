@@ -32,6 +32,7 @@ final class NetworkClient {
             if let data {
                 do {
                     let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .secondsSince1970
                     let model = try decoder.decode(T.self, from: data)
                     completion(.success(model))
                 } catch {
